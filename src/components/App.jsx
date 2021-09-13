@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import'./App.css';
 import axios from 'axios';
+import MusicLibraryForm from './MusicLibraryForm/MusicLibraryForm';
 
 
 class App extends Component {
@@ -21,11 +22,18 @@ class App extends Component {
       songs: resonse.data
     })
   }
+  createSong=(song)=>{
+    this.songs.push(song);
+    this.setState({
+      oneSong:this.songs.length -1
+    })
+  }
 
   render() { 
     return (
-      <div className="App">
+      <div className="container-fluid">
         <h1>Hello World!</h1>
+        <MusicLibraryForm everySong={this.createSong}/>
       </div>
       );
   }

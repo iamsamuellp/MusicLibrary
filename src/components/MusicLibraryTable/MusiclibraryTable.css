@@ -1,0 +1,14 @@
+.tableHeader{
+  background-color:darkmagenta;
+  
+}
+
+.table{
+  border-style: groove;
+  border-color:blue;
+  border: inline style 3px; 
+  width:fit-content;
+  margin: 15%;
+  padding-right: 1%;
+
+}
