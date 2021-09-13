@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import'./App.css';
 import axios from 'axios';
 import MusicLibraryForm from './MusicLibraryForm/MusicLibraryForm';
+import MusicLibraryTable from './MusicLibraryTable/MusicLibraryTable';
 
 
 class App extends Component {
@@ -13,14 +14,19 @@ class App extends Component {
      }
   }
   componentDidMount(){
-    this.getAllSongs();
-
+    this.makeGetRequest();
   }
-  async getAllSongs(){
-    let resonse = await axios.get('http://127.0.0.1:8000/music/');
-    this.setState({
-      songs: resonse.data
-    })
+
+  async makeGetRequest() {
+    try{
+      let response = await axios.get('http://127.0.0.1:8000/music/');
+      this.setState({
+        songs:response.data
+      });
+    }
+    catch (ex) {
+      console.log('Error in Api call!');
+    }
   }
   createSong=(song)=>{
     this.songs.push(song);
@@ -31,10 +37,12 @@ class App extends Component {
 
   render() { 
     return (
-      <div className="container-fluid">
+      <React.Fragment>
         <h1>Hello World!</h1>
         <MusicLibraryForm everySong={this.createSong}/>
-      </div>
+        <MusicLibraryTable sing={this.state.songs}/>
+        
+      </React.Fragment>
       );
   }
 }

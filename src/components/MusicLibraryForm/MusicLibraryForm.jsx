@@ -42,6 +42,7 @@ class MusicLibrary extends Component {
              <input name="genre" onChange={this.handleChange} value={this.state.genre}/>
              <label>release Date</label>
              <input name="release_date" onChange={this.handleChange} value={this.state.release_date}/>
+             <button type="submit">Enter Song</button>
       </form>
       );
   }
