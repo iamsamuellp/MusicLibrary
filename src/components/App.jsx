@@ -46,13 +46,24 @@ class App extends Component {
       console.log('Error in Create API call!');
   }
   }
+  async deleteSong(id){
+    try{
+      await axios.delete(`http://127.0.0.1:8000/music/${id}/`)
+      this.makeGetRequest()
+    }
+    catch (error) {
+      console.log('Error in Deleting API call!');
+    }
+  }
 
   render() { 
     return (
       <React.Fragment>
         <h1>Hello World!</h1>
         <MusicLibraryForm newSong={this.newSong.bind(this)}/>
-        <MusicLibraryTable sing={this.state.songs}/>
+        <MusicLibraryTable sing={this.state.songs} deleteSong={this.deleteSong.bind(this)}/>
+      
+      
         
       </React.Fragment>
       );

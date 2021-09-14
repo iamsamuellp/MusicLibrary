@@ -12,3 +12,10 @@
   padding-right: 1%;
 
 }
+.delete:hover {
+  background-color: whitesmoke;
+  display: inline-block;
+  color:darkred;
+  border: 4pc double cccccc;
+}
+

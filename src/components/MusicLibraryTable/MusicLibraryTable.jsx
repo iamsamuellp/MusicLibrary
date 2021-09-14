@@ -13,6 +13,7 @@ const MusicLibraryTable = (props)=>{
             <th>Album</th>
             <th>Artist</th>
             <th>Release Date</th>
+            <th>Delete Song</th>
           </tr>
           </thead>
         <tbody>
@@ -23,7 +24,12 @@ const MusicLibraryTable = (props)=>{
               <td>{songs.artist}</td>  
               <td>{songs.album}</td>  
               <td>{songs.artist}</td>  
-              <td>{songs.release_date}</td>   
+              <td>{songs.release_date}</td> 
+              <td>
+              <button className="delete" onClick={()=> props.deleteSong(songs.id)} >
+                Delete
+              </button>
+              </td>  
               </tr>
           )
           }
