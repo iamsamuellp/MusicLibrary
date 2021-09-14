@@ -1,11 +1,13 @@
 import React from 'react';
 import './MusicLibraryTable.css'
+import MusicFilter from '../MusicFilter/MusicFilter';
 
 const MusicLibraryTable = (props)=>{
 
     return(
     <div className="table table-dark" >
         <table>
+          <MusicFilter id="searchbar"/>
           <thead>
           <tr className="tableHeader">
             <th>Title</th>
