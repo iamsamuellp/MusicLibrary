@@ -4,7 +4,7 @@ import './MusicLibraryTable.css'
 const MusicLibraryTable = (props)=>{
 
     return(
-    <div className="table" >
+    <div className="table table-dark" >
         <table>
           <thead>
           <tr className="tableHeader">
