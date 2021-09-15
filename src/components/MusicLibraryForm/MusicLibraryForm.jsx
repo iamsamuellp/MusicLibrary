@@ -45,8 +45,8 @@ class MusicLibraryForm extends Component {
 
   render() { 
     return (
-      <form onSubmit={(event) => this.handleSubmit(event)}> 
-        <label>Song Title</label>
+      <form className="form" onSubmit={(event) => this.handleSubmit(event)}> 
+        <label className="label">Song Title</label>
              <input name="title" onChange={this.handleChange} value={this.state.title}/>
              <label>Album</label>
              <input name="album" onChange={this.handleChange} value={this.state.album}/>
@@ -56,7 +56,7 @@ class MusicLibraryForm extends Component {
              <input name="genre" onChange={this.handleChange} value={this.state.genre}/>
              <label>release Date</label>
              <input name="release_date" onChange={this.handleChange} value={this.state.release_date}/>
-             <button type="submit" onClick={this.sing}>New Song</button>
+             <button className="submit-button" type="submit" onClick={this.sing}>New Song</button>
       </form>
       );
   }

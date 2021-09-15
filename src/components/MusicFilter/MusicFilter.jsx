@@ -1,58 +1,61 @@
 import React, { Component } from 'react';
 import './MusicFilter.css'
-import axios from 'axios';
+
+
 
 
 class MusicFilter extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      songs:[],
-      filterSearch:'',
-      results:''
-    }
+      filtering:''
+     };
   }
-
-  componentDidMount(){
-    this.makeGetRequest();
-  }
-  async makeGetRequest(){
-    let response = await axios.get('http://127.0.0.1:8000/music/');
+  handleChange = (event) => {
     this.setState({
-      songs:response.data
-    })
-  }
+        [event.target.name]: event.target.value
+    })  
+  };
 
-  handleChange =(event) =>{
+  handleSubmit=(event) =>{
     event.preventDefault();
+    let filResults = this.props.search.filter(sing => {
+        if (sing.title.toLowerCase().includes(this.state.filtering.toLowerCase())){
+            return sing
+        }
+        if (sing.artist.toLowerCase().includes(this.state.filtering.toLowerCase())){
+            return sing
+        }
+        if (sing.album.toLowerCase().includes(this.state.filtering.toLowerCase())){
+            return sing
+        }
+        if (sing.genre.toLowerCase().includes(this.state.filtering.toLowerCase())){
+            return sing
+        }
+        if (sing.release_date.toLowerCase().includes(this.state.filtering.toLowerCase())){
+            return sing
+        }
+        else{
+            return false
+        }
+    });
     this.setState({
-      [event.target.name]: event.target.value,
+      filtering:''
     })
+    this.props.filters(filResults)
+    
   }
-
-  handleSubmit =(event) =>{
-    event.preventDefault();
-    this.filter.Sings()
-  } 
-
-  filterSearch= (props)=>{
-    let filteringSongs = this.state.songs.filter(song =>{
-    return song.title === this.state.search
-  })
-  return filteringSongs
-}
-
-
   render() { 
-    return (  
-      <div className="searchbar">
-        <form onSubmit={this.handleSubmit} >
-        <label>Filter Search</label>
-        <input name= 'filter' onChange= {this.handleChange} value = {this.state.filterSearch} />
-        <button type ='submit'>Find!</button>
-        </form>      
+    return ( 
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>Search </label>
+          <input className= "filterInput" name="filtering" title="search" type="text" value={this.state.filtering} onChange={this.handleChange}/>
+          <button className="InputButton"  type='submit'value="search" >Submit</button>
+        </form>
+
       </div>
-    );
+     );
   }
 }
  

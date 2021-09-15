@@ -1,36 +1,32 @@
 import React from 'react';
 import './MusicLibraryTable.css'
-import MusicFilter from '../MusicFilter/MusicFilter';
 
 const MusicLibraryTable = (props)=>{
 
     return(
-    <div className="table table-dark" >
-        <table>
-          <MusicFilter id="searchbar"/>
+    <div>
+        <table className= "table">
           <thead>
           <tr className="tableHeader">
             <th>Title</th>
             <th>Artist</th>
             <th>Album</th>
-            <th>Artist</th>
+            <th>Genre</th>
             <th>Release Date</th>
             <th>Delete Song</th>
           </tr>
           </thead>
-        <tbody>
+        <tbody className="tableRow">
           {props.sing.map((songs,index)=> {
             return(
-              <tr key={index} className="songs">
+              <tr key={index}>
               <td>{songs.title}</td> 
               <td>{songs.artist}</td>  
               <td>{songs.album}</td>  
-              <td>{songs.artist}</td>  
+              <td>{songs.genre}</td>  
               <td>{songs.release_date}</td> 
               <td>
-              <button className="delete" onClick={()=> props.deleteSong(songs.id)} >
-                Delete
-              </button>
+              <button className="delete" onClick={()=> props.deleteSong(songs.id)} > Delete </button>
               </td>  
               </tr>
           )

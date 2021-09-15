@@ -3,6 +3,8 @@ import'./App.css';
 import axios from 'axios';
 import MusicLibraryForm from './MusicLibraryForm/MusicLibraryForm';
 import MusicLibraryTable from './MusicLibraryTable/MusicLibraryTable';
+import MusicFilter from './MusicFilter/MusicFilter';
+
 
 
 class App extends Component {
@@ -12,6 +14,11 @@ class App extends Component {
       songs: []
 
      }
+  }
+  filteredTable=(fil) =>{
+    this.setState({
+      songs:fil
+    })
   }
   componentDidMount(){
     this.makeGetRequest();
@@ -56,14 +63,23 @@ class App extends Component {
     }
   }
 
+ 
+
+
+
   render() { 
     return (
       <React.Fragment>
+        <div className="container">
+          <div className= "inner">
         <h1>Hello World!</h1>
         <MusicLibraryForm newSong={this.newSong.bind(this)}/>
         <MusicLibraryTable sing={this.state.songs} deleteSong={this.deleteSong.bind(this)}/>
+        <MusicFilter search={this.state.songs} filters={this.filteredTable}/>
+        </div>
+          </div>
       
-      
+
         
       </React.Fragment>
       );

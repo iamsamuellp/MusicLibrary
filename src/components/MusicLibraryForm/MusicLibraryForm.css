@@ -1,0 +1,7 @@
+.forms[type=text] {
+width: 100%;
+margin: 8px 0;
+border: none;
+background-color: #3CBC8D;
+color: white;
+}
